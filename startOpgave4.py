@@ -66,14 +66,14 @@ Bestand = open ("enzymen.txt")
 print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-")
 
 for S in Bestand:
-    S = S.replace("^", "").split()
-    S.pop(0)
-    S = ''.join(S)
+    S = S.replace("^", "").split()                          # Dakjes worden verwijdert uit regels en de naam/seq uit .txt bestand word opgeslagen in een lijst, gesplits op de spatie
+    S.pop(0)                                                # Eerste element uit lijst word verwijdert, in dit geval de namen van de enzymen zodat alleen de sequenties over blijven
+    S = ''.join(S)                                          # Lijst word omgezet in string zodat het gebruikt kan worden met een .find() functie
     normaal = normaal_seq.find(S)
     sikkel = sikkel_seq.find(S)
-    if normaal and sikkel == -1:
+    if normaal and sikkel == -1:                            # Als de sequentie van enzym niet aanwezig is in beide sequenties, komt het overeen met een -1, dus knipt enzym niet in beide sequenties
         print(S, "Knipt niet")
-    else:
+    else:                                                   # Als enzym in beide sequenties aanwezig is knipt de enzym wel in beide sequenties
         print(S, "Knipt WEL in beide sequenties <----")
 
 
